@@ -1,22 +1,16 @@
 package org.springframework.samples.petclinic.product;
 
-import java.util.List;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
-import javax.validation.constraints.DecimalMin;
-import javax.validation.constraints.Digits;
-import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
-import javax.validation.constraints.NegativeOrZero;
 import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.PositiveOrZero;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-
-import org.hibernate.validator.constraints.Range;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -28,17 +22,17 @@ import lombok.Setter;
 public class Product {
 	
 	@Id
-	@NotEmpty
-    private Integer id;
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+    Integer id;
     
 	@Size(min = 3, max = 50)
-	@NotEmpty
-	private String name;
+	@NotNull
+	String name;
 	
-	@NotEmpty
-	@DecimalMin(value = "0.0")
-    private double price;
+	@NotNull
+	@Min(0)
+    double price;
 	
-	@ManyToOne(optional = false)
-    private ProductType productType;
+	@ManyToOne(optional = true)
+    ProductType productType;
 }

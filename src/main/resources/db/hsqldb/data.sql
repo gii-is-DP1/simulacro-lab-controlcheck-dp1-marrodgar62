@@ -68,3 +68,4 @@ INSERT INTO productstype(id,name) VALUES (2,'Food');
 
 INSERT INTO product(id,name,price,product_type_id) VALUES (1,'Wonderful dog collar',17.25,1);
 INSERT INTO product(id,name,price,product_type_id) VALUES (2,'Super Kitty Cookies',50.0,2);
+
